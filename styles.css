@@ -1,0 +1,297 @@
+/* --- 1. VARIABLES (Couleurs Sobres & Élégantes) --- */
+:root {
+    --bg-body: #F9F7F2;       /* Crème très clair pour le fond global */
+    --bg-header: #FFFFFF;     /* Blanc pur pour le menu */
+    --primary: #8D6E63;       /* Marron glacé (Titres & Détails) */
+    --secondary: #5D4037;     /* Marron foncé (Texte fort & Boutons) */
+    --accent: #EFEBE9;        /* Beige sable (Fonds de section alternés) */
+    --text-main: #3E2723;     /* Texte principal (Lisibilité optimale) */
+    --shadow: 0 4px 10px rgba(62, 39, 35, 0.08); /* Ombre douce et chaude */
+}
+
+/* --- 2. CONFIGURATION GÉNÉRALE --- */
+html {
+    scroll-behavior: smooth; /* Défilement fluide (Page 75 context) */
+}
+
+body {
+    font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; /* Page 163 */
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* --- 3. HEADER & NAVIGATION (Page 173 Sticky) --- */
+header {
+    background-color: var(--bg-header);
+    padding: 10px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: space-between; /* Logo à gauche, Menu à droite */
+    align-items: center;
+}
+
+.logo-box img {
+    height: 50px; /* Taille du logo maîtrisée */
+    width: auto;
+    display: block;
+}
+
+nav ul {
+    display: flex; /* Flexbox (Page 174) */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--secondary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-bottom: 5px;
+    position: relative;
+    transition: color 0.3s;
+}
+
+/* Effet de soulignement animé au survol (Pseudo-élément Page 156) */
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--primary);
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--primary);
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* --- 4. SECTION HERO (Accueil) --- */
+.hero {
+    background-color: var(--accent);
+    padding: 80px 20px;
+    text-align: center; /* Centrage demandé */
+    border-bottom: 1px solid #dcdcdc;
+}
+
+/* Animation d'apparition (Page 183) */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero h1 {
+    font-size: 3rem;
+    color: var(--secondary);
+    margin-bottom: 15px;
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+    color: var(--text-main);
+}
+
+/* --- 5. BOUTONS --- */
+.btn {
+    display: inline-block;
+    background-color: var(--secondary);
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 30px; /* Bords ronds modernes */
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.3s, background-color 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn:hover {
+    background-color: var(--primary);
+    transform: translateY(-3px); /* Petit effet de levée (Page 187) */
+}
+
+/* --- 6. CONTENU PRINCIPAL --- */
+main {
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+/* Titres de section */
+h2 {
+    color: var(--secondary);
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+/* Petit trait décoratif sous les titres */
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary);
+    margin: 10px auto 0 auto;
+    border-radius: 2px;
+}
+
+/* --- 7. GRILLE ÉQUIPE & PROJETS (Page 176) --- */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Responsive auto */
+    gap: 30px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: var(--shadow); /* Page 191 */
+    transition: transform 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%; /* Image ronde */
+    margin-bottom: 15px;
+    border: 3px solid var(--accent);
+}
+
+.card h3 {
+    margin: 10px 0 5px;
+    color: var(--secondary);
+}
+
+.card p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Pour le portfolio, images carrées */
+.project-card img {
+    width: 100%;
+    height: 180px;
+    border-radius: 5px;
+    object-fit: cover;
+    border: none;
+}
+
+/* --- 8. FORMULAIRE (Page 122) --- */
+form {
+    background: #fff;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+}
+
+fieldset {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+legend {
+    color: var(--primary);
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+    color: var(--secondary);
+}
+
+input[type="text"], input[type="email"], select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 5px rgba(141, 110, 99, 0.3);
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--secondary);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--primary);
+}
+
+/* --- 9. FOOTER --- */
+footer {
+    background-color: var(--secondary);
+    color: var(--accent);
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 60px;
+    font-size: 0.9rem;
+}
+
+/* --- 10. MOBILE (Page 178) --- */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 15px;
+    }
+    nav ul {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    nav ul li {
+        margin: 5px 10px;
+    }
+    .hero h1 { font-size: 2rem; }
+}
